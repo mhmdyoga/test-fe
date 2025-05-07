@@ -1,0 +1,12 @@
+POST https://test-fe.mysellerpintar.com/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "yoga",
+    "password": "yoga1234",
+    "role": "User"
+}
+
+###
+GET https://test-fe.mysellerpintar.com/api/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlMWI0ZDU2ZC01ZDNjLTQwYTEtYTk2Yy1mMjc4YTM3ZTI3OWIiLCJpYXQiOjE3NDY1NzAyNDF9.03xekaZBU_PKQHZGZf4A188F6fPp_sjGh0jmHM2cPaQ
