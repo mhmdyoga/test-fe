@@ -1,7 +1,7 @@
 "use client"
 import { Roboto } from 'next/font/google';
-import React, { useState } from 'react';
-import { Check, ChevronsUpDown } from "lucide-react";
+import React, { Suspense, useState } from 'react';
+import { Check, ChevronsUpDown, Loader2Icon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -107,7 +107,9 @@ function Homepage() {
               </PopoverContent>
             </Popover>
 
-              <InputSearchpage/>
+              <Suspense fallback={<div><Loader2Icon className='w-10 h-10 animate-spin'/></div>}>
+                <InputSearchpage/>
+              </Suspense>
           </div>
         </div>
       </div>
