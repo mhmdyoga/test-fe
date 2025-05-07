@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useGetSearchNews } from '@/lib/hooks/news/hooksGetNews';
-import { LoaderPinwheel } from 'lucide-react';
+import { Loader2Icon, LoaderPinwheel } from 'lucide-react';
 import Image from 'next/image';
 import {
   Card,
@@ -29,6 +29,7 @@ const SearchNews = () => {
 
   return (
     <div className='p-4 md:p-8'>
+      <Suspense fallback={<div><Loader2Icon className='w-10 h-10 animate-spin'/></div>}>
       <h2 className='text-xl font-semibold mb-6'>Hasil Pencarian: <span className="text-blue-500">{query}</span></h2>
 
       {NewsItem.data.length === 0 ? (
@@ -59,6 +60,7 @@ const SearchNews = () => {
           ))}
         </div>
       )}
+      </Suspense>
     </div>
   );
 };
