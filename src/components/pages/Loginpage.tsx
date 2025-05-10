@@ -16,6 +16,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import Link from 'next/link';
 
 const Loginpage = () => {
   const {
@@ -30,7 +31,6 @@ const Loginpage = () => {
   const { mutate: loginUser, isLoading } = useLogin();
 
   const onSubmit = (data: LoginSchemaType) => {
-    console.log(data);
     loginUser(data, {
       onSuccess: (res) => {
         localStorage.setItem("username", data.username);
@@ -85,6 +85,9 @@ const Loginpage = () => {
               {isLoading ? "Logging in..." : "Login"}
             </Button>
           </form>
+          <div className="mt-8">
+            <h2 className='text-blue-500 italic'>{`Don't have an Account?`} <Link href="/auth/sign-up">Sign-up</Link></h2>
+          </div>
         </CardContent>
       </Card>
     </div>
