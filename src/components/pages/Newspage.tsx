@@ -27,17 +27,9 @@ const Newspage = () => {
 
     const { data: NewsItem, isLoading } = useGetNewsByPagination(page);
 
-    const handleNextPage = () => {
-        if (NewsItem?.page) {
-            setPage((prevPage) => prevPage + 1);
-        }
-    };
-
-    const handlePrevPage = () => {
-        if (page > 1) {
-            setPage((prevPage) => prevPage - 1);
-        }
-    };
+    const handlePagination = (page: number) => {
+        setPage(page);
+    }
 
     if (isLoading) {
         return (
@@ -55,7 +47,7 @@ const Newspage = () => {
                 </div>
             ) : (
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-4 gap-2">
-                    {NewsItem.data.map((news: any) => (
+                    {NewsItem.data?.map((news: any) => (
                         <Card key={news.id}>
                             <CardHeader>
                                 <span className='text-sm'>{new Date(news.createdAt).toLocaleString()}</span>
@@ -83,13 +75,13 @@ const Newspage = () => {
                 <Pagination>
                     <PaginationContent>
                         <PaginationItem>
-                            <PaginationPrevious onClick={handlePrevPage} />
+                            <PaginationPrevious onClick={() => handlePagination(page - 1)} />
                         </PaginationItem>
                         <PaginationItem>
                             <PaginationLink isActive>{page}</PaginationLink>
                         </PaginationItem>
                         <PaginationItem>
-                            <PaginationNext onClick={handleNextPage} />
+                            <PaginationNext onClick={() => handlePagination(page + 1)} />
                         </PaginationItem>
                     </PaginationContent>
                 </Pagination>

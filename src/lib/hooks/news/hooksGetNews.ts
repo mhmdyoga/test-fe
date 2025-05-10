@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export function useGetNewsByPagination(page: number){
     return useQuery({
-            queryKey: ["news"],
+            queryKey: ["news", page],
             queryFn: () => getNewsByPagination(page)
          })
 }
